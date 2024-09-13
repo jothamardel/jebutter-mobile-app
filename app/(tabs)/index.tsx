@@ -51,7 +51,7 @@ export default function HomeScreen() {
         <View className="items-center space-x-4 justify-center flex-row">
           {!showSearch && (
             <>
-              <Link href="/modal">
+              <Link href="/modal-items">
                 <View className="w-10 h-10 border rounded-md justify-center items-center bg-[#f1b265]/50">
                   <CashSVG />
                 </View>
@@ -91,12 +91,14 @@ export default function HomeScreen() {
               key={index}
               className="p-2 border rounded-md bg-[#f1b265]/50 shadow-md"
             >
-              <View>
-                <Text className="font-bold text-lg">Business Name</Text>
-                <Text>Amount: ₦10,000</Text>
-                <Text>Quantity: 24</Text>
-                <Text>Type: Credit | Transfer | POS | Cash</Text>
-              </View>
+              <Link href="/modal-transaction">
+                <View>
+                  <Text className="font-bold text-lg">Business Name</Text>
+                  <Text>Amount: ₦10,000</Text>
+                  <Text>Quantity: 24</Text>
+                  <Text>Type: Credit | Transfer | POS | Cash</Text>
+                </View>
+              </Link>
             </View>
           ))}
         </ScrollView>
