@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  Modal,
 } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
@@ -22,6 +23,7 @@ import {
   StoreSVG,
 } from "@/components/svg/svg";
 import { useState } from "react";
+import { Link } from "expo-router";
 
 export default function HomeScreen() {
   const [showSearch, setShowSearch] = useState(false);
@@ -49,9 +51,11 @@ export default function HomeScreen() {
         <View className="items-center space-x-4 justify-center flex-row">
           {!showSearch && (
             <>
-              <View className="w-10 h-10 border rounded-md justify-center items-center bg-[#f1b265]/50">
-                <CashSVG />
-              </View>
+              <Link href="/modal">
+                <View className="w-10 h-10 border rounded-md justify-center items-center bg-[#f1b265]/50">
+                  <CashSVG />
+                </View>
+              </Link>
               <View className="w-10 h-10 border rounded-md mx-2 justify-center items-center bg-[#f1b265]/50">
                 <StoreSVG />
               </View>
