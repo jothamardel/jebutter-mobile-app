@@ -1,74 +1,102 @@
-import { Image, StyleSheet, Platform, Text } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Platform,
+  Text,
+  View,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import {
+  AddSVG,
+  CashSVG,
+  CheckoutSVG,
+  CloseSVG,
+  SearchSVG,
+  StoreSVG,
+} from "@/components/svg/svg";
+import { useState } from "react";
 
 export default function HomeScreen() {
+  const [showSearch, setShowSearch] = useState(false);
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: "cmd + d", android: "cmd + m" })}
-          </ThemedText>{" "}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this
-          starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{" "}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View className="flex-1 bg-[#f1b265] ">
+      <View className="h-1/6 mt-8 p-4 flex-row justify-between">
+        <View className="">
+          <View className="flex-row">
+            <Text className="text-lg font-bold">Hi, Sarah</Text>
+            <HelloWave />
+          </View>
+          <Text className="text-3xl font-bold text-white">Dashboard</Text>
+        </View>
+        <View className="flex-row  justify-end">
+          <CheckoutSVG />
+          <Text className="text-lg ">3</Text>
+        </View>
+      </View>
+      <View className="flex-1 bg-white rounded-t-3xl px-2">
+        <View className="my-4" />
+        <View>
+          <Text className="text-lg text-center">Total Sales:</Text>
+          <Text className="text-3xl font-bold text-center">₦100,000.00</Text>
+        </View>
+        <View className="items-center space-x-4 justify-center flex-row">
+          {!showSearch && (
+            <>
+              <View className="w-10 h-10 border rounded-md justify-center items-center bg-[#f1b265]/50">
+                <CashSVG />
+              </View>
+              <View className="w-10 h-10 border rounded-md mx-2 justify-center items-center bg-[#f1b265]/50">
+                <StoreSVG />
+              </View>
+              <TouchableOpacity
+                onPress={() => {
+                  setShowSearch(true);
+                }}
+                className="w-10 h-10 border rounded-md justify-center items-center bg-[#f1b265]/50"
+              >
+                <SearchSVG />
+              </TouchableOpacity>
+            </>
+          )}
+          {showSearch && (
+            <View className="w-full p-1.5 rounded-md flex-row items-center justify-center border">
+              <TextInput className="  flex-1" placeholder="search..." />
+              <TouchableOpacity
+                onPress={() => {
+                  setShowSearch(false);
+                }}
+              >
+                <CloseSVG />
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
+        <View className="my-2" />
+        <View className="border-t border-gray-300" />
+
+        <ScrollView className="space-y-2 p-2 pb-4">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 23].map((item, index) => (
+            <View
+              key={index}
+              className="p-2 border rounded-md bg-[#f1b265]/50 shadow-md"
+            >
+              <View>
+                <Text className="font-bold text-lg">Business Name</Text>
+                <Text>Amount: ₦10,000</Text>
+                <Text>Quantity: 24</Text>
+                <Text>Type: Credit | Transfer | POS | Cash</Text>
+              </View>
+            </View>
+          ))}
+        </ScrollView>
+      </View>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});
