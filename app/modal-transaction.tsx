@@ -1,7 +1,7 @@
 import { Pressable, Text, View } from "react-native";
 import { Link, router } from "expo-router";
 
-export default function Modal() {
+export default function ModalTransaction() {
   const isPresented = router.canGoBack();
   return (
     <View className="flex-1 i bg-white mt-10">

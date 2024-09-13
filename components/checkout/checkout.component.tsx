@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, TextInput } from "react-native";
 import { ArrowLeftSVG, ArrowRightSVG } from "../svg/svg";
 import { useState } from "react";
 
@@ -22,7 +22,12 @@ export default () => {
             >
               <ArrowLeftSVG />
             </Pressable>
-            <Text className="border p-2 rounded-md">{qty}</Text>
+            {/* <Text className="border p-2 rounded-md">{qty}</Text> */}
+            <TextInput
+              value={`${qty}`}
+              className="border p-2 rounded-md text-center"
+              onChangeText={(val) => setQty(Number(val))}
+            />
             <Pressable
               onPress={() => {
                 setQty(qty + 1);

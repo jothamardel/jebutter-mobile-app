@@ -3,7 +3,7 @@ import { Link, router } from "expo-router";
 import { ArrowLeftSVG, ArrowRightSVG } from "@/components/svg/svg";
 import CheckoutComponent from "@/components/checkout/checkout.component";
 
-export default function Modal() {
+export default function ModalItems() {
   const isPresented = router.canGoBack();
   return (
     <View className="flex-1 i bg-white mt-10">
@@ -21,11 +21,17 @@ export default function Modal() {
       <CheckoutComponent />
 
       <View className="p-4 space-y-4">
-        <Pressable className="w-full bg-green-800   rounded-md p-2">
+        {/* <Pressable className="w-full bg-green-800   rounded-md p-2">
           <Text className="text-white text-center text-lg">
             Proceed to checkout
           </Text>
-        </Pressable>
+        </Pressable> */}
+        <Link
+          href="/modal-checkout"
+          className="w-full bg-green-800 p-2 text-white text-center rounded-md text-lg"
+        >
+          Proceed to checkout
+        </Link>
         <Link
           href="../"
           className="w-full bg-green-800 p-2 text-white text-center rounded-md text-lg"
