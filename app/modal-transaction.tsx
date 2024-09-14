@@ -47,15 +47,15 @@ export default function ModalTransaction() {
         <Text className=" text-center">0709000000</Text>
       </View>
       <View className="p-4 space-y-4">
-        <Link
-          href="../"
-          className="w-full bg-green-800 p-2 text-white text-center rounded-md text-lg"
-        >
-          Back
-        </Link>
         <Pressable className="w-full bg-green-800   rounded-md p-2">
           <Text className="text-white text-center text-lg">Download</Text>
         </Pressable>
+        <Link
+          href="../"
+          className="w-full bg-[#f1b265]/50 p-2 font-bold text-center rounded-md text-lg"
+        >
+          Back
+        </Link>
       </View>
     </View>
   );
