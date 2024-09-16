@@ -8,6 +8,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Modal,
+  Pressable,
 } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
@@ -25,6 +26,7 @@ import {
 import { useContext, useState } from "react";
 import { Link } from "expo-router";
 import { OrderContext } from "@/context/order.context";
+import Svg, { Path } from "react-native-svg";
 
 const data = [
   {
@@ -135,44 +137,54 @@ export default function HomeScreen() {
     }, 0);
   }
   return (
-    <View className="flex-1 bg-[#f1b265] ">
-      <View className="h-1/6 mt-8 p-4 flex-row justify-between">
+    <ScrollView className="flex-1 bg-[#f1b265] ">
+      <View className="h-20 mt-8 p-4 flex-row justify-between">
         <View className="">
           <Text className="text-3xl font-bold text-white">Inventory</Text>
         </View>
       </View>
-      <View className="flex-1 bg-white rounded-t-3xl px-2">
-        <View className="my-4" />
-        <View>
-          <Text className="text-lg text-center">Items:</Text>
+      <View className="flex-1 bg-white h-screen rounded-t-3xl p-4">
+        <View className="flex-row justify-between items-center py-2">
+          <Text className="my-2 font-bold">Stock</Text>
+          <Pressable className="border rounded-md bg-[#f1b265]/30">
+            <Svg width={32} height={32} viewBox="0 0 256 256">
+              <Path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z" />
+            </Svg>
+          </Pressable>
         </View>
-        <View className="items-center space-x-4 justify-center flex-row">
-          {/* <Link href="/modal-items">
-            <View className="w-10 h-10 border rounded-md justify-center items-center bg-[#f1b265]/50">
-              <CashSVG />
-            </View>
-          </Link>
-          <Link href="/modal-shop" className="mx-2">
-            <View className="w-10 h-10 border rounded-md mx-2 justify-center items-center bg-[#f1b265]/50">
-              <StoreSVG />
-            </View>
-          </Link> */}
-          <TouchableOpacity
-            onPress={() => {
-              setShowSearch(true);
-            }}
-            className="w-10 h-10 border rounded-md justify-center items-center bg-[#f1b265]/50"
-          >
-            <SearchSVG />
-          </TouchableOpacity>
-        </View>
-        <View className="my-2" />
+        <View className="" />
         <View className="border-t border-gray-300" />
 
-        <ScrollView className="space-y-2 p-2 pb-4 ">
-          <View className="flex-row flex-wrap space-x-2 space-y-2">
-            {[1, 2, 3, 4,5].map((item) => (
-              <View className="p-2 border rounded-md bg-[#f1b265]/50 shadow-md w-1/3">
+        <ScrollView className="p-2 flex-1">
+          <View className=" flex-row flex-wrap">
+            {[1, 2, 3, 4, 5, 6].map((item) => (
+              <View className="p-2 border border-gray-200 w-1/2">
+                <Link href="/modal-transaction">
+                  <View>
+                    <Text className="font-bold text-lg">{"Item"}</Text>
+                    <Text>Quantity: 23</Text>
+                  </View>
+                </Link>
+              </View>
+            ))}
+          </View>
+        </ScrollView>
+
+        <View className="flex-row justify-between items-center py-2">
+          <Text className="my-2 font-bold">Product/Bread</Text>
+          <Pressable className="border rounded-md bg-[#f1b265]/30">
+            <Svg width={32} height={32} viewBox="0 0 256 256">
+              <Path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z" />
+            </Svg>
+          </Pressable>
+        </View>
+        <View className="" />
+        <View className="border-t border-gray-300" />
+
+        <ScrollView className="p-2 pb-4 flex-1">
+          <View className=" flex-row flex-wrap">
+            {[1, 2, 3, 4, 5, 6].map((item) => (
+              <View className="p-2 border border-gray-200 w-1/2">
                 <Link href="/modal-transaction">
                   <View>
                     <Text className="font-bold text-lg">{"Item"}</Text>
@@ -202,6 +214,6 @@ export default function HomeScreen() {
           ))}
         </ScrollView> */}
       </View>
-    </View>
+    </ScrollView>
   );
 }

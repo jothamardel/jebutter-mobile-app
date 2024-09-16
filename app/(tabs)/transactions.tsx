@@ -102,7 +102,7 @@ const data = [
 
 export default function TabTwoScreen() {
   return (
-    <View className="flex-1 bg-[#f1b265]/50">
+    <View className="flex-1 bg-white">
       <View className="bg-[#f1b265]/20 w-full p-2 mt-10">
         <Text className="text-2xl font-bold text-center">Transactions</Text>
       </View>
